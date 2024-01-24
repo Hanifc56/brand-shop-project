@@ -1,12 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Shared/Navbar";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Toaster, toast } from "sonner";
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
+
+  const [passError, setPassError] = useState("");
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -19,6 +21,18 @@ const Register = () => {
     const password = form.get("password");
     console.log(name, photo, email, password);
 
+    if (password.length < 6) {
+      setPassError("Password should be more then 6 character");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setPassError("Password should contain atleast one Uppercase Character");
+      return;
+    } else if (!/[#?!@$%^&*\\-_]/.test(password)) {
+      setPassError("Password must contain a spcail charecture like: @#$%");
+      return;
+    }
+    // reset Error message
+    setPassError("");
     // create User
 
     createUser(email, password)
@@ -40,6 +54,7 @@ const Register = () => {
       })
       .catch((error) => {
         console.error(error);
+        setPassError(error.message);
       });
   };
   return (
@@ -99,6 +114,9 @@ const Register = () => {
               "
               required
             />
+            {passError && (
+              <span className="label-text text-red-400">{passError}</span>
+            )}
             <div className="flex mt-2">
               <label className="label cursor-default ">
                 <input type="checkbox" className="checkbox my- items-center" />

@@ -7,6 +7,7 @@ import ErrorPage from "../Pages/Error/ErrorPage";
 import AddProduct from "../Pages/AddProduct/AddProduct";
 import MyCart from "../Pages/MyCart/MyCart";
 import Home from "../Pages/Home/Home";
+import PrivetRoutes from "./PrivetRoutes";
 
 const router = createBrowserRouter([
   {
@@ -20,11 +21,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/addproduct",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <PrivetRoutes>
+            <AddProduct></AddProduct>
+          </PrivetRoutes>
+        ),
       },
       {
         path: "/mycart",
-        element: <MyCart></MyCart>,
+        element: (
+          <PrivetRoutes>
+            <MyCart></MyCart>
+          </PrivetRoutes>
+        ),
       },
       {
         path: "/login",

@@ -1,8 +1,8 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Shared/Navbar";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { useContext } from "react";
-import { Toaster, toast } from "sonner";
+import { useContext, useState } from "react";
+import { toast } from "sonner";
 import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
@@ -10,6 +10,7 @@ const Login = () => {
   const location = useLocation();
   console.log("loaction form login page", location);
   const navigate = useNavigate();
+  const [mailError, setMailError] = useState("");
   const handleLogin = (e) => {
     e.preventDefault();
     console.log(e.currentTarget);
@@ -17,6 +18,9 @@ const Login = () => {
     const email = form.get("email");
     const password = form.get("password");
     console.log(email, password);
+
+    // clear the feild
+    setMailError("");
 
     // Login With email and password
     singIn(email, password)
@@ -29,6 +33,8 @@ const Login = () => {
       })
       .catch((error) => {
         console.error(error);
+        setMailError(error.message);
+        toast.error("Invalid Mail or Password");
       });
   };
   const handleLoginWithGoogle = () => {
@@ -37,7 +43,8 @@ const Login = () => {
       .then((result) => {
         console.log(result);
         // navigate to the disired loaction
-        navigate(location?.state ? location.state : "/");
+        toast.success("Login Successful!") &&
+          navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.error(error);
@@ -64,6 +71,9 @@ const Login = () => {
               bg-transparent"
               required
             />
+            {mailError && (
+              <span className="label-text text-red-400">{mailError}</span>
+            )}
           </div>
           <div className="form-control">
             <label className="label">
@@ -77,6 +87,9 @@ const Login = () => {
               bg-transparent"
               required
             />
+            {mailError && (
+              <span className="label-text text-red-400">{mailError}</span>
+            )}
             <label className="label">
               <a href="#" className="label-text-alt link link-hover">
                 Forgot password?
@@ -84,13 +97,7 @@ const Login = () => {
             </label>
           </div>
           <div className="form-control mt-6">
-            <Toaster position="top-right"></Toaster>
-            <button
-              onClick={() => toast.success("Login Successful!")}
-              className="btn btn-outline bg-transparent  "
-            >
-              Login
-            </button>
+            <button className="btn btn-outline bg-transparent  ">Login</button>
           </div>
         </form>
         <hr className="border-black pb-5" />
