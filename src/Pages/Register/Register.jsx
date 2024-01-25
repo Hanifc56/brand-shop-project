@@ -58,7 +58,7 @@ const Register = () => {
       });
   };
   return (
-    <div className="bg-[url('https://i.ibb.co/WxXs46H/pexels-krivec-ales-547115.jpg')] pb-12 pt-4 rounded-lg my-10 bg-cover">
+    <div className="bg-[url('https://i.ibb.co/SXPF16L/pexels-wendy-van-zyl-1212179.jpg')] pb-12 pt-4 rounded-b-lg mb-10 bg-cover">
       <Navbar></Navbar>
       <div className="lg:w-1/2 md:w-3/4 mx-auto p-8  rounded-lg bg-gray-100 hero-overlay bg-opacity-50 border-2">
         <h2 className="text-4xl text-center font-semibold">

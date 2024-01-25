@@ -30,7 +30,7 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="py-8 bg-transparent">
+    <div className="my-8  mx-auto   bg-gray-100 hero-overlay bg-opacity-50 ">
       <div className="navbar  ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -57,7 +57,15 @@ const Navbar = () => {
               {navLinks}
             </ul>
           </div>
-          <a className="btn btn-ghost text-2xl">J&J Events.</a>
+          <div>
+            <div className="max-w-40">
+              <img
+                src="https://i.ibb.co/2dpMy0S/black-4x.png"
+                className="pl-2 w-full"
+                alt=""
+              />
+            </div>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>

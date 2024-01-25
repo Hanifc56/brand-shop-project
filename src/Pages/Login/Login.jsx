@@ -51,7 +51,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="bg-[url('https://i.ibb.co/R0Sd9MZ/pexels-simon-berger-1323550.jpg')] pb-12 pt-4 rounded-lg my-10 bg-cover">
+    <div className="bg-[url('https://i.ibb.co/M1wDvwh/pexels-pixabay-276223.jpg')] pb-12 pt-4 rounded-b-lg mb-10 bg-cover">
       <Navbar></Navbar>
       <div className="lg:w-1/2 md:w-3/4 mx-auto p-8 bg-gray-100 hero-overlay bg-opacity-50 border-2  rounded-lg">
         <h2 className="text-4xl text-center font-semibold">
