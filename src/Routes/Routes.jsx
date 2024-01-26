@@ -70,7 +70,8 @@ const router = createBrowserRouter([
             <UpdateProduct></UpdateProduct>
           </PrivetRoutes>
         ),
-        loader: () => fetch("http://localhost:5000/products"),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
       {
         path: "/login",
