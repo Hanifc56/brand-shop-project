@@ -48,7 +48,7 @@ const NewsLetter = () => {
                   <HandRaisedIcon className="h-6 w-6 " aria-hidden="true" />
                 </div>
                 <dt className="mt-4 font-semibold ">No spam</dt>
-                <dd className="mt-2 leading-7 text-gray-400">
+                <dd className="mt-2 leading-7 ">
                   Enjoy a clutter-free inbox with our no-spam policy. We respect
                   your privacy and ensure that you only receive relevant and
                   valuable content from us.

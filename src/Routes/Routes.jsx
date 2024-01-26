@@ -9,6 +9,9 @@ import MyCart from "../Pages/MyCart/MyCart";
 import Home from "../Pages/Home/Home";
 import PrivetRoutes from "./PrivetRoutes";
 
+import Brand from "../Pages/Home/Brand";
+import ProductByBrand from "../Pages/Brands/ProductByBrand";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +37,16 @@ const router = createBrowserRouter([
             <MyCart></MyCart>
           </PrivetRoutes>
         ),
+      },
+      {
+        path: "/brand",
+        element: <Brand></Brand>,
+        loader: () => fetch("http://localhost:5000/products"),
+      },
+      {
+        path: "/brand/:brandName",
+        element: <ProductByBrand></ProductByBrand>,
+        loader: () => fetch("http://localhost:5000/products"),
       },
       {
         path: "/login",
