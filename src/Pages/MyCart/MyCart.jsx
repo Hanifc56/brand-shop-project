@@ -7,9 +7,10 @@ import Swal from "sweetalert2";
 
 const MyCart = () => {
   const [open, setOpen] = useState(true);
-  const products = useLoaderData();
+  const lodedCarts = useLoaderData();
+
+  const [carts, setCarts] = useState(lodedCarts);
   const handleDelete = (_id) => {
-    console.log(_id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -32,6 +33,8 @@ const MyCart = () => {
                 text: "Your cart has been deleted.",
                 icon: "success",
               });
+              const remainingCards = carts.filter((cart) => cart._id !== _id);
+              setCarts(remainingCards);
             }
           });
       }
@@ -95,7 +98,7 @@ const MyCart = () => {
                               role="list"
                               className="-my-6 divide-y divide-gray-200"
                             >
-                              {products.map((product) => (
+                              {lodedCarts.map((product) => (
                                 <li key={product._id} className="flex py-6">
                                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                     <img

@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             <MyCart></MyCart>
           </PrivetRoutes>
         ),
-        loader: () => fetch("http://localhost:5000/mycart"),
+        loader: () => fetch("http://localhost:5000/mycart/"),
       },
       {
         path: "/brand",
