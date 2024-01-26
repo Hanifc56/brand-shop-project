@@ -10,6 +10,7 @@ const ProductByBrand = () => {
   const thisBrandProduct = products.filter(
     (product) => product.brand === brandName
   );
+
   return (
     <div>
       <Navbar></Navbar>

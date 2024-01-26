@@ -39,11 +39,11 @@ const router = createBrowserRouter([
             <MyCart></MyCart>
           </PrivetRoutes>
         ),
+        loader: () => fetch("http://localhost:5000/mycart"),
       },
       {
         path: "/brand",
         element: <Brand></Brand>,
-        loader: () => fetch("http://localhost:5000/products"),
       },
       {
         path: "/brand/:brandName",
@@ -55,12 +55,22 @@ const router = createBrowserRouter([
         loader: () => fetch("http://localhost:5000/products"),
       },
       {
-        path: "/productDetails",
-        element: <ProductDetails></ProductDetails>,
+        path: "/productDetails/:id",
+        element: (
+          <PrivetRoutes>
+            <ProductDetails></ProductDetails>
+          </PrivetRoutes>
+        ),
+        loader: () => fetch("http://localhost:5000/products"),
       },
       {
-        path: "/updateProduct",
-        element: <UpdateProduct></UpdateProduct>,
+        path: "/updateProduct/:id",
+        element: (
+          <PrivetRoutes>
+            <UpdateProduct></UpdateProduct>
+          </PrivetRoutes>
+        ),
+        loader: () => fetch("http://localhost:5000/products"),
       },
       {
         path: "/login",
