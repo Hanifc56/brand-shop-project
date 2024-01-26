@@ -11,6 +11,8 @@ import PrivetRoutes from "./PrivetRoutes";
 
 import Brand from "../Pages/Home/Brand";
 import ProductByBrand from "../Pages/Brands/ProductByBrand";
+import ProductDetails from "../Pages/Brands/ProductDetails";
+import UpdateProduct from "../Pages/Brands/UpdateProduct";
 
 const router = createBrowserRouter([
   {
@@ -45,8 +47,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/brand/:brandName",
-        element: <ProductByBrand></ProductByBrand>,
+        element: (
+          <PrivetRoutes>
+            <ProductByBrand></ProductByBrand>
+          </PrivetRoutes>
+        ),
         loader: () => fetch("http://localhost:5000/products"),
+      },
+      {
+        path: "/productDetails",
+        element: <ProductDetails></ProductDetails>,
+      },
+      {
+        path: "/updateProduct",
+        element: <UpdateProduct></UpdateProduct>,
       },
       {
         path: "/login",

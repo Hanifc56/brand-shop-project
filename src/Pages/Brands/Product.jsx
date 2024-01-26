@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
+
 const Product = ({ product }) => {
   const { name, brand, photo, type, price, rateing, discription } = product;
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card w-96 bg-base-100 border border-blue-300">
         <figure className="px-10 pt-10">
           <img src={photo} alt="Shoes" className="rounded-xl" />
         </figure>
@@ -16,8 +18,14 @@ const Product = ({ product }) => {
           </div>
           <p>{discription}</p>
           <div className="card-actions">
-            <button className="btn btn-primary">View Details</button>
-            <button className="btn btn-primary">Update</button>
+            <Link to="/productDetails">
+              <button className="btn btn-outline btn-primary">
+                View Details
+              </button>
+            </Link>
+            <Link to="/updateProduct">
+              <button className="btn btn-outline btn-primary">Update</button>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,5 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import Product from "./Product";
+import Navbar from "../Shared/Navbar";
+import Slider from "../Shared/Slider";
 
 const ProductByBrand = () => {
   const products = useLoaderData();
@@ -10,10 +12,13 @@ const ProductByBrand = () => {
   );
   return (
     <div>
-      <h1>Produt by brand {products.length}</h1>
-      {thisBrandProduct.map((product) => (
-        <Product key={product._id} product={product}></Product>
-      ))}
+      <Navbar></Navbar>
+      <Slider></Slider>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {thisBrandProduct.map((product) => (
+          <Product key={product._id} product={product}></Product>
+        ))}
+      </div>
     </div>
   );
 };
