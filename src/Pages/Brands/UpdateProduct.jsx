@@ -23,7 +23,7 @@ const UpdateProduct = () => {
     const rateing = form.rateing.value;
     const discription = form.discription.value;
 
-    const newProduct = {
+    const updatedProduct = {
       name,
       brand,
       photo,
@@ -32,22 +32,22 @@ const UpdateProduct = () => {
       rateing,
       discription,
     };
-    console.log(newProduct);
+    console.log(updatedProduct);
     // send data to the server
-    fetch("http://localhost:5000/products", {
-      method: "POST",
+    fetch(`http://localhost:5000/products/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newProduct),
+      body: JSON.stringify(updatedProduct),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
+        if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Success!",
-            text: "Added Successfully",
+            text: "Product updated Successfully",
             icon: "success",
             confirmButtonText: "COOL",
           });
