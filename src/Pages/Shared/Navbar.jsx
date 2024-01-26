@@ -55,6 +55,39 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navLinks}
+              {user ? (
+                <>
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div className="w-10 rounded-full">
+                      <img alt="User Image" src={user.photoURL} />
+                    </div>
+                  </div>
+                  <div className="pl-2">
+                    <p>{user.displayName}</p>
+                  </div>
+                </>
+              ) : (
+                <></>
+              )}
+              <Toaster position="top-right"></Toaster>
+              {user ? (
+                <button
+                  onClick={handleLogOut}
+                  className="btn btn-outline text-xl font-semibold "
+                >
+                  LogOut
+                </button>
+              ) : (
+                <Link to="/login">
+                  <button className="btn btn-outline text-xl font-semibold">
+                    Login
+                  </button>
+                </Link>
+              )}
             </ul>
           </div>
           <div>
@@ -71,7 +104,7 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
 
-        <div className="navbar-end ">
+        <div className="navbar-end hidden lg:flex ">
           {user ? (
             <>
               <div
