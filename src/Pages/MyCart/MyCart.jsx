@@ -28,14 +28,14 @@ const MyCart = () => {
           .then((data) => {
             console.log(data);
             if (data.deletedCount > 0) {
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your cart has been deleted.",
-                icon: "success",
-              });
-              const remainingCards = carts.filter((cart) => cart._id !== _id);
+              const remainingCards = carts.filter((carts) => carts._id !== _id);
               setCarts(remainingCards);
             }
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your cart has been deleted.",
+              icon: "success",
+            });
           });
       }
     });
