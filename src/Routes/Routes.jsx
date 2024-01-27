@@ -39,7 +39,8 @@ const router = createBrowserRouter([
             <MyCart></MyCart>
           </PrivetRoutes>
         ),
-        loader: () => fetch("http://localhost:5000/mycart/"),
+        loader: () =>
+          fetch("https://brand-shop-server-bthj.onrender.com/mycart"),
       },
       {
         path: "/brand",
@@ -52,7 +53,8 @@ const router = createBrowserRouter([
             <ProductByBrand></ProductByBrand>
           </PrivetRoutes>
         ),
-        loader: () => fetch("http://localhost:5000/products"),
+        loader: () =>
+          fetch("https://brand-shop-server-bthj.onrender.com/products"),
       },
       {
         path: "/productDetails/:id",
@@ -61,7 +63,8 @@ const router = createBrowserRouter([
             <ProductDetails></ProductDetails>
           </PrivetRoutes>
         ),
-        loader: () => fetch("http://localhost:5000/products"),
+        loader: () =>
+          fetch("https://brand-shop-server-bthj.onrender.com/products"),
       },
       {
         path: "/updateProduct/:id",
@@ -71,7 +74,9 @@ const router = createBrowserRouter([
           </PrivetRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(
+            `https://brand-shop-server-bthj.onrender.com/products/${params.id}`
+          ),
       },
       {
         path: "/login",

@@ -13,7 +13,7 @@ const ProductDetails = () => {
   const handleAddToCart = () => {
     const addedCart = { name, brand, photo, type, price, rateing, discription };
     console.log(addedCart);
-    fetch("http://localhost:5000/mycart", {
+    fetch("https://brand-shop-server-bthj.onrender.com/mycart", {
       method: "POST",
       headers: {
         "content-type": "application/json",
